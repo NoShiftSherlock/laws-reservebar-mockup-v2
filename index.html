@@ -127,6 +127,7 @@
     cursor:pointer;
   }
   .rb-addr-edit{display:flex;gap:8px;margin-top:8px;}
+  .rb-addr-edit[hidden]{display:none;}
   .rb-addr-edit input{
     flex:1;border:1px solid var(--line-strong);border-radius:6px;padding:9px 11px;
     font:inherit;font-size:14px;color:var(--ink);
@@ -140,6 +141,11 @@
   .rb-addr-msg{font-size:13px;margin-top:6px;}
   .rb-addr-msg.err{color:#c0392b;}
   .rb-addr-msg.ok{color:#1e7e34;}
+  .rb-disclaimer{
+    font-size:12px;letter-spacing:.3px;color:var(--muted);
+    display:flex;align-items:center;gap:6px;margin-bottom:18px;
+  }
+  .rb-disclaimer::before{content:"\24D8";font-size:14px;}
   .rb-shipfrom-row{
     display:flex;
     justify-content:space-between;
@@ -297,6 +303,8 @@
           </div>
           <div class="rb-addr-msg" id="addrMsg" hidden></div>
         </div>
+
+        <div class="rb-disclaimer">Only delivery available to CO residents.</div>
 
         <div class="rb-carousel-head">
           <div class="rb-label" style="margin-bottom:0;">Delivery From: Mondo Vino</div>
