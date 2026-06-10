@@ -22,213 +22,85 @@
   a{color:inherit;}
 
   .announce{
-    background:var(--black);
-    color:#fff;
-    text-align:center;
-    font-size:13px;
-    font-weight:700;
-    letter-spacing:.2px;
-    padding:11px 16px;
+    background:var(--black);color:#fff;text-align:center;
+    font-size:13px;font-weight:700;letter-spacing:.2px;padding:11px 16px;
   }
 
   header{
-    background:var(--black);
-    color:#fff;
-    display:flex;
-    align-items:center;
-    gap:32px;
-    padding:20px 48px;
+    background:var(--black);color:#fff;display:flex;align-items:center;gap:32px;padding:20px 48px;
   }
   .brand{flex-shrink:0;display:flex;align-items:center;}
   .brand img.logo{height:54px;width:auto;display:block;}
   nav{display:flex;gap:28px;flex:1;}
-  nav a{
-    font-size:13px;
-    font-weight:600;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    text-decoration:none;
-    color:#fff;
-    opacity:.92;
-  }
+  nav a{font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;color:#fff;opacity:.92;}
   nav a:hover{opacity:1;}
   .icons{display:flex;gap:20px;align-items:center;flex-shrink:0;}
   .icons svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.6;}
 
   .product{
-    max-width:1320px;
-    margin:0 auto;
-    padding:48px 48px 80px;
-    display:grid;
-    grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
-    gap:60px;
+    max-width:1320px;margin:0 auto;padding:48px 48px 80px;
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:60px;
   }
 
-  .gallery .main-img{
-    border:1px solid var(--line);
-    background:#fff;
-    overflow:hidden;
-  }
+  .gallery .main-img{border:1px solid var(--line);background:#fff;overflow:hidden;}
   .gallery .main-img img{width:100%;height:auto;display:block;}
   .thumbs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;}
   .thumb{border:1px solid var(--line);overflow:hidden;}
   .thumb img{width:100%;height:auto;display:block;}
 
-  .eyebrow{
-    font-size:13px;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    color:var(--muted);
-    margin-bottom:10px;
-  }
-  h1.title{
-    font-size:46px;
-    line-height:1.08;
-    font-weight:700;
-    letter-spacing:-0.5px;
-    color:var(--ink);
-    margin-bottom:28px;
-  }
+  .eyebrow{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  h1.title{font-size:46px;line-height:1.08;font-weight:700;letter-spacing:-0.5px;color:var(--ink);margin-bottom:28px;}
 
-  /* ===== ReserveBar commerce module (replaces native add-to-cart) ===== */
+  /* ===== ReserveBar commerce module ===== */
   .rb-module{margin-bottom:30px;}
-  .rb-price{
-    font-size:38px;
-    font-weight:800;
-    letter-spacing:-1px;
-    color:var(--black);
-    margin-bottom:22px;
-  }
-  .rb-label{
-    font-size:14px;
-    font-weight:700;
-    color:var(--ink);
-    margin-bottom:9px;
-  }
-  .rb-size{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    background:var(--black);
-    color:#fff;
-    font-size:14px;
-    font-weight:600;
-    padding:11px 22px;
-    border-radius:6px;
-    margin-bottom:22px;
-  }
-  .rb-block{margin-bottom:18px;}
-  .rb-block .rb-label{margin-bottom:4px;}
-  .rb-address{
-    font-size:15px;
-    color:var(--ink);
-    text-decoration:underline;
-    text-underline-offset:2px;
-    cursor:pointer;
-  }
-  .rb-addr-edit{display:flex;gap:8px;margin-top:8px;}
-  .rb-addr-edit[hidden]{display:none;}
-  .rb-addr-edit input{
-    flex:1;border:1px solid var(--line-strong);border-radius:6px;padding:9px 11px;
-    font:inherit;font-size:14px;color:var(--ink);
-  }
-  .rb-addr-edit input:focus{outline:none;border-color:var(--black);}
-  .rb-addr-edit button{
-    background:var(--black);color:#fff;border:none;border-radius:6px;
-    padding:0 16px;font-size:14px;font-weight:700;cursor:pointer;
-  }
-  .rb-addr-edit button:hover{background:#222;}
-  .rb-addr-msg{font-size:13px;margin-top:6px;}
-  .rb-addr-msg.err{color:#c0392b;}
-  .rb-addr-msg.ok{color:#1e7e34;}
-  .rb-disclaimer{
-    font-size:12px;letter-spacing:.3px;color:var(--muted);
-    display:flex;align-items:center;gap:6px;margin-bottom:18px;
-  }
-  .rb-disclaimer::before{content:"\24D8";font-size:14px;}
-  .rb-shipfrom-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    margin-bottom:10px;
-  }
-  .rb-shipfrom-row .opt{font-size:14px;font-weight:700;color:var(--ink);}
-  .rb-offer{
-    border:1px solid var(--line-strong);
-    border-radius:10px;
-    padding:18px 20px;
-    margin-bottom:22px;
-  }
-  .rb-offer .row{display:flex;justify-content:space-between;align-items:baseline;}
-  .rb-offer .row.first{margin-bottom:6px;}
-  .rb-offer .merchant{font-size:16px;font-weight:700;color:var(--ink);}
-  .rb-offer .price-r{font-size:16px;font-weight:700;color:var(--ink);}
-  .rb-offer .eta{font-size:15px;color:var(--ink);}
-  .rb-offer .fee{font-size:15px;color:var(--ink);}
-  .rb-cart-row{display:flex;gap:14px;align-items:stretch;}
-  .qty{
-    display:flex;align-items:center;
-    border:1px solid var(--line-strong);
-    border-radius:6px;overflow:hidden;flex-shrink:0;
-  }
-  .qty button{
-    width:42px;height:48px;border:none;background:#fff;cursor:pointer;
-    font-size:20px;color:var(--ink);
-    display:flex;align-items:center;justify-content:center;
-  }
-  .qty button:hover{background:#f6f6f6;}
-  .qty .val{
-    width:42px;text-align:center;font-size:16px;font-weight:600;
-    border-left:1px solid var(--line);border-right:1px solid var(--line);
-    height:48px;display:flex;align-items:center;justify-content:center;
-  }
-  .add-cart{
-    flex:1;background:var(--black);color:#fff;border:none;border-radius:6px;
-    font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.3px;
-  }
-  .add-cart:hover{background:#222;}
+  .rb-pricerow{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;}
+  .rb-price{font-size:38px;font-weight:800;letter-spacing:-1px;color:var(--black);}
+  .rb-personalize{font-size:15px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:2px;margin-top:8px;}
+  .rb-personalize:hover{text-decoration:underline;}
 
-  /* delivery options carousel */
-  .rb-carousel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;}
-  .rb-arrows{display:flex;gap:8px;}
-  .rb-arrow{
-    width:30px;height:30px;border:1px solid var(--line-strong);border-radius:50%;background:#fff;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink);line-height:1;
+  .rb-label{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:9px;}
+  .rb-size{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:var(--black);color:#fff;font-size:14px;font-weight:600;
+    padding:11px 22px;border-radius:0;margin-bottom:22px;
   }
-  .rb-arrow:hover{background:#f6f6f6;}
-  .rb-carousel{
-    display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
-    padding:4px 2px 8px;margin-bottom:22px;scrollbar-width:none;
+  .rb-block{margin-bottom:22px;}
+  .rb-block .rb-label{margin-bottom:4px;}
+  .rb-address{font-size:15px;color:var(--ink);text-decoration:underline;text-underline-offset:2px;}
+
+  /* tabs */
+  .rb-tabs{display:flex;gap:30px;border-bottom:1px solid var(--line);margin-bottom:18px;}
+  .rb-tab{
+    background:none;border:none;cursor:pointer;padding:0 0 12px;
+    font-size:15px;font-weight:600;color:var(--muted);position:relative;font-family:inherit;
   }
-  .rb-carousel::-webkit-scrollbar{display:none;}
+  .rb-tab.active{color:var(--ink);}
+  .rb-tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--black);}
+
+  /* horizontal card carousel */
+  .rb-carousel{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 12px;margin-bottom:22px;}
+  .rb-carousel::-webkit-scrollbar{height:6px;}
+  .rb-carousel::-webkit-scrollbar-thumb{background:#d4d4d4;border-radius:3px;}
   .rb-card{
-    flex:0 0 184px;scroll-snap-align:start;border:1.5px solid var(--line-strong);border-radius:10px;
-    padding:14px 16px;cursor:pointer;background:#fff;text-align:left;font:inherit;position:relative;transition:border-color .12s;
+    flex:0 0 auto;width:232px;min-height:202px;
+    border:1px solid var(--line-strong);border-radius:0;padding:18px 18px 20px;
+    display:flex;flex-direction:column;cursor:pointer;transition:border-color .12s ease;
   }
-  .rb-card:hover{border-color:#aaa;}
-  .rb-card.selected{border-color:var(--black);box-shadow:inset 0 0 0 1px var(--black);}
-  .rb-card.selected::after{
-    content:"\2713";position:absolute;top:10px;right:12px;
-    width:18px;height:18px;background:var(--black);color:#fff;border-radius:50%;
-    font-size:11px;display:flex;align-items:center;justify-content:center;
-  }
-  .rb-card .c-name{font-size:14px;font-weight:800;color:var(--ink);}
-  .rb-card .c-merchant{font-size:12px;color:var(--muted);margin-top:2px;}
-  .rb-card .c-eta{font-size:13px;color:var(--muted);margin:6px 0 12px;line-height:1.3;}
-  .rb-card .c-fee{font-size:16px;font-weight:800;color:var(--black);}
-  /* scheduled-delivery picker */
-  .rb-schedule{
-    border:1px solid var(--line-strong);border-radius:10px;padding:16px 18px;margin:-4px 0 22px;display:none;
-  }
-  .rb-schedule.show{display:block;}
-  .rb-schedule .sch-label{font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
-  .rb-schedule .sch-row{display:flex;gap:12px;}
-  .rb-schedule .sch-field{flex:1;}
-  .rb-schedule input,.rb-schedule select{
-    width:100%;border:1px solid var(--line-strong);border-radius:6px;padding:11px 12px;
-    font:inherit;font-size:14px;color:var(--ink);background:#fff;cursor:pointer;
-  }
-  .rb-schedule .sch-confirm{font-size:14px;color:var(--ink);margin-top:12px;font-weight:600;}
+  .rb-card:hover{border-color:#888;}
+  .rb-card.sel{background:var(--black);border-color:var(--black);color:#fff;}
+  .rb-card .m{font-size:16px;font-weight:700;line-height:1.25;margin-bottom:auto;}
+  .rb-card .big{font-size:32px;font-weight:800;letter-spacing:-.5px;margin-top:20px;}
+  .rb-card .fee{font-size:15px;color:var(--muted);margin-top:8px;}
+  .rb-card .eta{font-size:15px;color:var(--muted);margin-top:3px;}
+  .rb-card.sel .fee,.rb-card.sel .eta{color:#e8e8e8;}
+
+  .rb-cart-row{display:flex;gap:14px;align-items:stretch;}
+  .qty{display:flex;align-items:center;border:1px solid var(--line-strong);border-radius:0;overflow:hidden;flex-shrink:0;}
+  .qty button{width:42px;height:48px;border:none;background:#fff;cursor:pointer;font-size:20px;color:var(--ink);display:flex;align-items:center;justify-content:center;}
+  .qty button:hover{background:#f6f6f6;}
+  .qty .val{width:42px;text-align:center;font-size:16px;font-weight:600;border-left:1px solid var(--line);border-right:1px solid var(--line);height:48px;display:flex;align-items:center;justify-content:center;}
+  .add-cart{flex:1;background:var(--black);color:#fff;border:none;border-radius:0;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.3px;}
+  .add-cart:hover{background:#222;}
   /* ===== end ReserveBar module ===== */
 
   .awards{margin-bottom:24px;}
@@ -289,75 +161,79 @@
 
       <!-- ===== ReserveBar commerce module ===== -->
       <div class="rb-module">
-        <div class="rb-price">$51.99</div>
+
+        <div class="rb-pricerow">
+          <div class="rb-price" id="bigPrice">$25.95</div>
+          <a class="rb-personalize" id="personalize" href="#">Add Personalization</a>
+        </div>
 
         <div class="rb-label">Size</div>
         <div class="rb-size">750 ML</div>
 
         <div class="rb-block">
           <div class="rb-label">Delivers to:</div>
-          <a class="rb-address" id="addrDisplay" href="#">2669 Larimer St, Denver, CO 80205</a>
-          <div class="rb-addr-edit" id="addrEdit" hidden>
-            <input type="text" id="addrInput" value="2669 Larimer St, Denver, CO 80205" placeholder="Street, City, CO ZIP" autocomplete="off">
-            <button id="addrSave" type="button">Save</button>
-          </div>
-          <div class="rb-addr-msg" id="addrMsg" hidden></div>
+          <a class="rb-address" href="#">2669 Larimer St, Denver, CO 80205</a>
         </div>
 
-        <div class="rb-disclaimer">Only delivery available to CO residents.</div>
+        <div class="rb-tabs">
+          <button class="rb-tab active" data-tab="shipping">Shipping (4)</button>
+          <button class="rb-tab" data-tab="sameday">Same-Day Delivery (4)</button>
+        </div>
 
-        <div class="rb-carousel-head">
-          <div class="rb-label" style="margin-bottom:0;">Delivery From: Mondo Vino</div>
-          <div class="rb-arrows">
-            <button class="rb-arrow" id="prevOpt" aria-label="Previous">&#8249;</button>
-            <button class="rb-arrow" id="nextOpt" aria-label="Next">&#8250;</button>
+        <!-- Same-Day Delivery cards -->
+        <div class="rb-carousel" id="cardsSameday" style="display:none">
+          <div class="rb-card sel">
+            <div class="m">Pecos Wine &amp; Spirits</div>
+            <div class="big">$25.95</div>
+            <div class="fee">FREE Delivery</div>
+            <div class="eta">Arrives in 60 mins</div>
+          </div>
+          <div class="rb-card">
+            <div class="m">Vino Mock &amp; Spirits</div>
+            <div class="big">$27.50</div>
+            <div class="fee">FREE Delivery</div>
+            <div class="eta">Arrives in 60 mins</div>
+          </div>
+          <div class="rb-card">
+            <div class="m">Mock Barrels &amp; Co.</div>
+            <div class="big">$26.80</div>
+            <div class="fee">FREE Delivery</div>
+            <div class="eta">Arrives in 60 mins</div>
+          </div>
+          <div class="rb-card">
+            <div class="m">The Mock Pour</div>
+            <div class="big">$27.99</div>
+            <div class="fee">FREE Delivery</div>
+            <div class="eta">Arrives in 90 mins</div>
           </div>
         </div>
 
-        <div class="rb-carousel" id="rbCarousel">
-          <button class="rb-card selected">
-            <div class="c-name">Local Delivery</div>
-            <div class="c-merchant">Mondo Vino</div>
-            <div class="c-eta">Arrives in 60 mins</div>
-            <div class="c-fee">$4.99</div>
-          </button>
-          <button class="rb-card">
-            <div class="c-name">Standard Shipping</div>
-            <div class="c-merchant">Ships nationwide</div>
-            <div class="c-eta">5&ndash;7 business days</div>
-            <div class="c-fee">$14.99</div>
-          </button>
-          <button class="rb-card">
-            <div class="c-name">Store Pickup</div>
-            <div class="c-merchant">Mondo Vino</div>
-            <div class="c-eta">Ready in 2 hours</div>
-            <div class="c-fee">Free</div>
-          </button>
-          <button class="rb-card" data-schedule="true">
-            <div class="c-name">Scheduled Delivery</div>
-            <div class="c-merchant">Mondo Vino</div>
-            <div class="c-eta">Pick a date &amp; time</div>
-            <div class="c-fee">$4.99</div>
-          </button>
-        </div>
-
-        <div class="rb-schedule" id="rbSchedule">
-          <div class="sch-label">Schedule your delivery</div>
-          <div class="sch-row">
-            <div class="sch-field">
-              <input type="date" id="schDate">
-            </div>
-            <div class="sch-field">
-              <select id="schTime">
-                <option>9:00 AM – 11:00 AM</option>
-                <option>11:00 AM – 1:00 PM</option>
-                <option>1:00 PM – 3:00 PM</option>
-                <option>3:00 PM – 5:00 PM</option>
-                <option>5:00 PM – 7:00 PM</option>
-              </select>
-            </div>
+        <!-- Shipping cards -->
+        <div class="rb-carousel" id="cardsShipping">
+          <div class="rb-card sel">
+            <div class="m">W &amp; J Wines &amp; Spirits</div>
+            <div class="big">$25.95</div>
+            <div class="fee">+ $9.99</div>
+            <div class="eta">Ships in 2-3 days</div>
           </div>
-          <div class="sch-confirm" id="schConfirm">Select a date and time window for your delivery.</div>
+          <div class="rb-card">
+            <div class="m">Vino Mock &amp; Spirits</div>
+            <div class="big">$27.50</div>
+            <div class="fee">+ $9.99</div>
+            <div class="eta">Ships in 2-3 days</div>
+          </div>
+          <div class="rb-card">
+            <div class="m">Mock Barrels &amp; Co.</div>
+            <div class="big">$26.80</div>
+            <div class="fee">+ $9.99</div>
+            <div class="eta">Ships in 2-3 days</div>
+          </div>
+          <div class="rb-card">
+            <div class="m">The Mock Pour</div>
+            <div class="big">$27.99</div>
+            <div class="fee">+ $9.99</div>
+            <div class="eta">Ships in 2-3 days</div>
+          </div>
         </div>
 
         <div class="rb-cart-row">
@@ -366,8 +242,9 @@
             <div class="val" id="qval">1</div>
             <button id="inc" aria-label="Increase quantity">+</button>
           </div>
-          <button class="add-cart">Add To Cart - $51.99</button>
+          <button class="add-cart" id="addBtn">Add To Cart - $25.95</button>
         </div>
+
       </div>
       <!-- ===== end ReserveBar module ===== -->
 
@@ -379,92 +256,48 @@
       <p class="desc">Our Four Grain Bourbon story starts with two Colorado family farms where high quality corn and heirloom varietals of wheat, barley and rye are grown. Those grains find their expression during our labor-intensive cooking technique, bringing each grain's individual character to life, while open-air sour mash adds soulful complexity. After four years in 53-gallon charred oak barrels, influenced by our high-altitude climate, an entirely novel bourbon unfolds.</p>
 
       <div class="aromas">AROMAS:</div>
-      <p class="desc" style="margin:8px 0 22px;">Orange blossoms compliment notes of black tea, honey and dusty pepper.</p>
-
-      <div class="aromas">PALATE:</div>
-      <p class="desc" style="margin:8px 0 22px;">Pekoe tea, orange peel, cinnamon and vanilla custard. Hints of sweet tobacco and spice lead to a rich, dry finish.</p>
-
-      <div class="aromas">THE DETAILS:</div>
-      <p class="desc" style="margin:8px 0 0;">
-        Mash Bill: 60% Colorado corn, 20% heirloom wheat, 10% heirloom rye, 10% heirloom malted barley<br>
-        Aged 4+ years in new 53-gallon charred oak barrels<br>
-        95 Proof · 47.5% ABV
-      </p>
     </div>
 
   </main>
 
 <script>
+  // quantity
   let q = 1;
   const val = document.getElementById('qval');
   document.getElementById('inc').onclick = () => { q++; val.textContent = q; };
   document.getElementById('dec').onclick = () => { if (q > 1) { q--; val.textContent = q; } };
 
-  // scheduled-delivery picker
-  const sched = document.getElementById('rbSchedule');
-  const schDate = document.getElementById('schDate');
-  const schTime = document.getElementById('schTime');
-  const schConfirm = document.getElementById('schConfirm');
-  const todayISO = new Date().toISOString().split('T')[0];
-  schDate.min = todayISO;
-  schDate.value = todayISO;
-  function updateSchedule(){
-    if(schDate.value){
-      const d = new Date(schDate.value + 'T00:00:00');
-      const label = d.toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric'});
-      schConfirm.textContent = 'Arriving ' + label + ' · ' + schTime.value;
-    }
-  }
-  schDate.onchange = updateSchedule;
-  schTime.onchange = updateSchedule;
+  const bigPrice = document.getElementById('bigPrice');
+  const addBtn = document.getElementById('addBtn');
+  const sameday = document.getElementById('cardsSameday');
+  const shipping = document.getElementById('cardsShipping');
+  const personalize = document.getElementById('personalize');
 
-  // delivery options carousel — select + scroll
-  document.querySelectorAll('.rb-card').forEach(card => {
-    card.onclick = () => {
-      document.querySelectorAll('.rb-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      const isSchedule = card.dataset.schedule === 'true';
-      sched.classList.toggle('show', isSchedule);
-      if(isSchedule) updateSchedule();
-    };
+  function setPrice(p){ bigPrice.textContent = p; addBtn.textContent = 'Add To Cart - ' + p; }
+
+  // tab switching
+  document.querySelectorAll('.rb-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.rb-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const isShip = tab.dataset.tab === 'shipping';
+      shipping.style.display = isShip ? 'flex' : 'none';
+      sameday.style.display = isShip ? 'none' : 'flex';
+      personalize.style.display = isShip ? '' : 'none';
+      const grp = isShip ? shipping : sameday;
+      const sel = grp.querySelector('.rb-card.sel');
+      if (sel) setPrice(sel.querySelector('.big').textContent);
+    });
   });
-  const carousel = document.getElementById('rbCarousel');
-  document.getElementById('nextOpt').onclick = () => carousel.scrollBy({left: 196, behavior: 'smooth'});
-  document.getElementById('prevOpt').onclick = () => carousel.scrollBy({left: -196, behavior: 'smooth'});
 
-  // editable delivery address — Colorado only
-  const addrDisplay = document.getElementById('addrDisplay');
-  const addrEdit = document.getElementById('addrEdit');
-  const addrInput = document.getElementById('addrInput');
-  const addrSave = document.getElementById('addrSave');
-  const addrMsg = document.getElementById('addrMsg');
-
-  function isColorado(addr){
-    const s = addr.trim();
-    if(/\bcolorado\b/i.test(s)) return true;          // "... Colorado ..."
-    if(/,\s*co\b/i.test(s)) return true;              // "..., CO" state abbreviation
-    const zip = s.match(/\b(\d{5})\b/);               // CO ZIPs run 80001–81658
-    if(zip){ const z = +zip[1]; if(z >= 80001 && z <= 81658) return true; }
-    return false;
-  }
-
-  addrDisplay.onclick = (e) => {
-    e.preventDefault();
-    addrEdit.hidden = false;
-    addrMsg.hidden = true;
-    addrInput.focus();
-    addrInput.select();
-  };
-  function saveAddr(){
-    const v = addrInput.value.trim();
-    if(!v){ addrMsg.textContent = 'Please enter a delivery address.'; addrMsg.className = 'rb-addr-msg err'; addrMsg.hidden = false; return; }
-    if(!isColorado(v)){ addrMsg.textContent = 'Sorry — we currently only deliver to Colorado (CO) addresses.'; addrMsg.className = 'rb-addr-msg err'; addrMsg.hidden = false; return; }
-    addrDisplay.textContent = v;
-    addrEdit.hidden = true;
-    addrMsg.textContent = 'Delivery address updated.'; addrMsg.className = 'rb-addr-msg ok'; addrMsg.hidden = false;
-  }
-  addrSave.onclick = saveAddr;
-  addrInput.onkeydown = (e) => { if(e.key === 'Enter'){ e.preventDefault(); saveAddr(); } };
+  // card selection (scoped to its own carousel)
+  document.querySelectorAll('.rb-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.parentElement.querySelectorAll('.rb-card').forEach(c => c.classList.remove('sel'));
+      card.classList.add('sel');
+      setPrice(card.querySelector('.big').textContent);
+    });
+  });
 </script>
 </body>
 </html>
