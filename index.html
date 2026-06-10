@@ -124,7 +124,22 @@
     color:var(--ink);
     text-decoration:underline;
     text-underline-offset:2px;
+    cursor:pointer;
   }
+  .rb-addr-edit{display:flex;gap:8px;margin-top:8px;}
+  .rb-addr-edit input{
+    flex:1;border:1px solid var(--line-strong);border-radius:6px;padding:9px 11px;
+    font:inherit;font-size:14px;color:var(--ink);
+  }
+  .rb-addr-edit input:focus{outline:none;border-color:var(--black);}
+  .rb-addr-edit button{
+    background:var(--black);color:#fff;border:none;border-radius:6px;
+    padding:0 16px;font-size:14px;font-weight:700;cursor:pointer;
+  }
+  .rb-addr-edit button:hover{background:#222;}
+  .rb-addr-msg{font-size:13px;margin-top:6px;}
+  .rb-addr-msg.err{color:#c0392b;}
+  .rb-addr-msg.ok{color:#1e7e34;}
   .rb-shipfrom-row{
     display:flex;
     justify-content:space-between;
@@ -275,7 +290,12 @@
 
         <div class="rb-block">
           <div class="rb-label">Delivers to:</div>
-          <a class="rb-address" href="#">2669 Larimer St, Denver, CO 80205</a>
+          <a class="rb-address" id="addrDisplay" href="#">2669 Larimer St, Denver, CO 80205</a>
+          <div class="rb-addr-edit" id="addrEdit" hidden>
+            <input type="text" id="addrInput" value="2669 Larimer St, Denver, CO 80205" placeholder="Street, City, CO ZIP" autocomplete="off">
+            <button id="addrSave" type="button">Save</button>
+          </div>
+          <div class="rb-addr-msg" id="addrMsg" hidden></div>
         </div>
 
         <div class="rb-carousel-head">
@@ -403,6 +423,40 @@
   const carousel = document.getElementById('rbCarousel');
   document.getElementById('nextOpt').onclick = () => carousel.scrollBy({left: 196, behavior: 'smooth'});
   document.getElementById('prevOpt').onclick = () => carousel.scrollBy({left: -196, behavior: 'smooth'});
+
+  // editable delivery address — Colorado only
+  const addrDisplay = document.getElementById('addrDisplay');
+  const addrEdit = document.getElementById('addrEdit');
+  const addrInput = document.getElementById('addrInput');
+  const addrSave = document.getElementById('addrSave');
+  const addrMsg = document.getElementById('addrMsg');
+
+  function isColorado(addr){
+    const s = addr.trim();
+    if(/\bcolorado\b/i.test(s)) return true;          // "... Colorado ..."
+    if(/,\s*co\b/i.test(s)) return true;              // "..., CO" state abbreviation
+    const zip = s.match(/\b(\d{5})\b/);               // CO ZIPs run 80001–81658
+    if(zip){ const z = +zip[1]; if(z >= 80001 && z <= 81658) return true; }
+    return false;
+  }
+
+  addrDisplay.onclick = (e) => {
+    e.preventDefault();
+    addrEdit.hidden = false;
+    addrMsg.hidden = true;
+    addrInput.focus();
+    addrInput.select();
+  };
+  function saveAddr(){
+    const v = addrInput.value.trim();
+    if(!v){ addrMsg.textContent = 'Please enter a delivery address.'; addrMsg.className = 'rb-addr-msg err'; addrMsg.hidden = false; return; }
+    if(!isColorado(v)){ addrMsg.textContent = 'Sorry — we currently only deliver to Colorado (CO) addresses.'; addrMsg.className = 'rb-addr-msg err'; addrMsg.hidden = false; return; }
+    addrDisplay.textContent = v;
+    addrEdit.hidden = true;
+    addrMsg.textContent = 'Delivery address updated.'; addrMsg.className = 'rb-addr-msg ok'; addrMsg.hidden = false;
+  }
+  addrSave.onclick = saveAddr;
+  addrInput.onkeydown = (e) => { if(e.key === 'Enter'){ e.preventDefault(); saveAddr(); } };
 </script>
 </body>
 </html>
