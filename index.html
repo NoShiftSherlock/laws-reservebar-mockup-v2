@@ -66,7 +66,20 @@
   }
   .rb-block{margin-bottom:22px;}
   .rb-block .rb-label{margin-bottom:4px;}
-  .rb-address{font-size:15px;color:var(--ink);text-decoration:underline;text-underline-offset:2px;}
+  .rb-address{font-size:15px;color:var(--ink);text-decoration:underline;text-underline-offset:2px;cursor:pointer;}
+
+  /* editable address + disclaimer */
+  .rb-addr-edit{display:flex;gap:8px;margin-top:8px;}
+  .rb-addr-edit[hidden]{display:none;}
+  .rb-addr-edit input{flex:1;border:1px solid var(--line-strong);border-radius:0;padding:9px 11px;font:inherit;font-size:14px;color:var(--ink);}
+  .rb-addr-edit input:focus{outline:none;border-color:var(--black);}
+  .rb-addr-edit button{background:var(--black);color:#fff;border:none;border-radius:0;padding:0 16px;font-size:14px;font-weight:700;cursor:pointer;}
+  .rb-addr-edit button:hover{background:#222;}
+  .rb-addr-msg{font-size:13px;margin-top:6px;}
+  .rb-addr-msg.err{color:#c0392b;}
+  .rb-addr-msg.ok{color:#1e7e34;}
+  .rb-disclaimer{font-size:12px;letter-spacing:.3px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-bottom:22px;}
+  .rb-disclaimer::before{content:"\24D8";font-size:14px;}
 
   /* tabs */
   .rb-tabs{display:flex;gap:30px;border-bottom:1px solid var(--line);margin-bottom:18px;}
@@ -172,8 +185,15 @@
 
         <div class="rb-block">
           <div class="rb-label">Delivers to:</div>
-          <a class="rb-address" href="#">2669 Larimer St, Denver, CO 80205</a>
+          <a class="rb-address" id="addrDisplay" href="#">2669 Larimer St, Denver, CO 80205</a>
+          <div class="rb-addr-edit" id="addrEdit" hidden>
+            <input type="text" id="addrInput" value="2669 Larimer St, Denver, CO 80205" placeholder="Street, City, CO ZIP" autocomplete="off">
+            <button id="addrSave" type="button">Save</button>
+          </div>
+          <div class="rb-addr-msg" id="addrMsg" hidden></div>
         </div>
+
+        <div class="rb-disclaimer">Only delivery available to CO residents.</div>
 
         <div class="rb-tabs">
           <button class="rb-tab active" data-tab="shipping">Shipping (4)</button>
@@ -183,25 +203,25 @@
         <!-- Same-Day Delivery cards -->
         <div class="rb-carousel" id="cardsSameday" style="display:none">
           <div class="rb-card sel">
-            <div class="m">Pecos Wine &amp; Spirits</div>
+            <div class="m">Mondo Vino</div>
             <div class="big">$25.95</div>
             <div class="fee">FREE Delivery</div>
             <div class="eta">Arrives in 60 mins</div>
           </div>
           <div class="rb-card">
-            <div class="m">Vino Mock &amp; Spirits</div>
+            <div class="m">Argonaut Wine &amp; Liquor</div>
             <div class="big">$27.50</div>
             <div class="fee">FREE Delivery</div>
             <div class="eta">Arrives in 60 mins</div>
           </div>
           <div class="rb-card">
-            <div class="m">Mock Barrels &amp; Co.</div>
+            <div class="m">Molly's Spirits</div>
             <div class="big">$26.80</div>
             <div class="fee">FREE Delivery</div>
             <div class="eta">Arrives in 60 mins</div>
           </div>
           <div class="rb-card">
-            <div class="m">The Mock Pour</div>
+            <div class="m">Bonnie Brae Wine &amp; Liquor</div>
             <div class="big">$27.99</div>
             <div class="fee">FREE Delivery</div>
             <div class="eta">Arrives in 90 mins</div>
@@ -211,25 +231,25 @@
         <!-- Shipping cards -->
         <div class="rb-carousel" id="cardsShipping">
           <div class="rb-card sel">
-            <div class="m">W &amp; J Wines &amp; Spirits</div>
+            <div class="m">Mondo Vino</div>
             <div class="big">$25.95</div>
             <div class="fee">+ $9.99</div>
             <div class="eta">Ships in 2-3 days</div>
           </div>
           <div class="rb-card">
-            <div class="m">Vino Mock &amp; Spirits</div>
+            <div class="m">Argonaut Wine &amp; Liquor</div>
             <div class="big">$27.50</div>
             <div class="fee">+ $9.99</div>
             <div class="eta">Ships in 2-3 days</div>
           </div>
           <div class="rb-card">
-            <div class="m">Mock Barrels &amp; Co.</div>
+            <div class="m">Molly's Spirits</div>
             <div class="big">$26.80</div>
             <div class="fee">+ $9.99</div>
             <div class="eta">Ships in 2-3 days</div>
           </div>
           <div class="rb-card">
-            <div class="m">The Mock Pour</div>
+            <div class="m">Bonnie Brae Wine &amp; Liquor</div>
             <div class="big">$27.99</div>
             <div class="fee">+ $9.99</div>
             <div class="eta">Ships in 2-3 days</div>
@@ -256,6 +276,17 @@
       <p class="desc">Our Four Grain Bourbon story starts with two Colorado family farms where high quality corn and heirloom varietals of wheat, barley and rye are grown. Those grains find their expression during our labor-intensive cooking technique, bringing each grain's individual character to life, while open-air sour mash adds soulful complexity. After four years in 53-gallon charred oak barrels, influenced by our high-altitude climate, an entirely novel bourbon unfolds.</p>
 
       <div class="aromas">AROMAS:</div>
+      <p class="desc" style="margin:8px 0 22px;">Orange blossoms compliment notes of black tea, honey and dusty pepper.</p>
+
+      <div class="aromas">PALATE:</div>
+      <p class="desc" style="margin:8px 0 22px;">Pekoe tea, orange peel, cinnamon and vanilla custard. Hints of sweet tobacco and spice lead to a rich, dry finish.</p>
+
+      <div class="aromas">THE DETAILS:</div>
+      <p class="desc" style="margin:8px 0 0;">
+        Mash Bill: 60% Colorado corn, 20% heirloom wheat, 10% heirloom rye, 10% heirloom malted barley<br>
+        Aged 4+ years in new 53-gallon charred oak barrels<br>
+        95 Proof · 47.5% ABV
+      </p>
     </div>
 
   </main>
@@ -298,6 +329,40 @@
       setPrice(card.querySelector('.big').textContent);
     });
   });
+
+  // editable delivery address — Colorado only
+  const addrDisplay = document.getElementById('addrDisplay');
+  const addrEdit = document.getElementById('addrEdit');
+  const addrInput = document.getElementById('addrInput');
+  const addrSave = document.getElementById('addrSave');
+  const addrMsg = document.getElementById('addrMsg');
+
+  function isColorado(addr){
+    const s = addr.trim();
+    if(/\bcolorado\b/i.test(s)) return true;          // "... Colorado ..."
+    if(/,\s*co\b/i.test(s)) return true;              // "..., CO" state abbreviation
+    const zip = s.match(/\b(\d{5})\b/);               // CO ZIPs run 80001–81658
+    if(zip){ const z = +zip[1]; if(z >= 80001 && z <= 81658) return true; }
+    return false;
+  }
+
+  addrDisplay.onclick = (e) => {
+    e.preventDefault();
+    addrEdit.hidden = false;
+    addrMsg.hidden = true;
+    addrInput.focus();
+    addrInput.select();
+  };
+  function saveAddr(){
+    const v = addrInput.value.trim();
+    if(!v){ addrMsg.textContent = 'Please enter a delivery address.'; addrMsg.className = 'rb-addr-msg err'; addrMsg.hidden = false; return; }
+    if(!isColorado(v)){ addrMsg.textContent = 'Sorry — we currently only deliver to Colorado (CO) addresses.'; addrMsg.className = 'rb-addr-msg err'; addrMsg.hidden = false; return; }
+    addrDisplay.textContent = v;
+    addrEdit.hidden = true;
+    addrMsg.textContent = 'Delivery address updated.'; addrMsg.className = 'rb-addr-msg ok'; addrMsg.hidden = false;
+  }
+  addrSave.onclick = saveAddr;
+  addrInput.onkeydown = (e) => { if(e.key === 'Enter'){ e.preventDefault(); saveAddr(); } };
 </script>
 </body>
 </html>
