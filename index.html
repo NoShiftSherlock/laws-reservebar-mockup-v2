@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAWS Whiskey House — Four Grain Straight Bourbon (ReserveBar mockup)</title>
+<style>
+  :root{
+    --black:#0b0b0b;
+    --ink:#1a1a1a;
+    --muted:#6b6b6b;
+    --line:#e6e6e6;
+    --line-strong:#cfcfcf;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:#fff;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+
+  .announce{
+    background:var(--black);
+    color:#fff;
+    text-align:center;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.2px;
+    padding:11px 16px;
+  }
+
+  header{
+    background:var(--black);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    gap:32px;
+    padding:20px 48px;
+  }
+  .brand{flex-shrink:0;display:flex;align-items:center;}
+  .brand img.logo{height:54px;width:auto;display:block;}
+  nav{display:flex;gap:28px;flex:1;}
+  nav a{
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:#fff;
+    opacity:.92;
+  }
+  nav a:hover{opacity:1;}
+  .icons{display:flex;gap:20px;align-items:center;flex-shrink:0;}
+  .icons svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.6;}
+
+  .product{
+    max-width:1320px;
+    margin:0 auto;
+    padding:48px 48px 80px;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+    gap:60px;
+  }
+
+  .gallery .main-img{
+    border:1px solid var(--line);
+    background:#fff;
+    overflow:hidden;
+  }
+  .gallery .main-img img{width:100%;height:auto;display:block;}
+  .thumbs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;}
+  .thumb{border:1px solid var(--line);overflow:hidden;}
+  .thumb img{width:100%;height:auto;display:block;}
+
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:10px;
+  }
+  h1.title{
+    font-size:46px;
+    line-height:1.08;
+    font-weight:700;
+    letter-spacing:-0.5px;
+    color:var(--ink);
+    margin-bottom:28px;
+  }
+
+  /* ===== ReserveBar commerce module (replaces native add-to-cart) ===== */
+  .rb-module{margin-bottom:30px;}
+  .rb-price{
+    font-size:38px;
+    font-weight:800;
+    letter-spacing:-1px;
+    color:var(--black);
+    margin-bottom:22px;
+  }
+  .rb-label{
+    font-size:14px;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:9px;
+  }
+  .rb-size{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--black);
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    padding:11px 22px;
+    border-radius:6px;
+    margin-bottom:22px;
+  }
+  .rb-block{margin-bottom:18px;}
+  .rb-block .rb-label{margin-bottom:4px;}
+  .rb-address{
+    font-size:15px;
+    color:var(--ink);
+    text-decoration:underline;
+    text-underline-offset:2px;
+  }
+  .rb-shipfrom-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:10px;
+  }
+  .rb-shipfrom-row .opt{font-size:14px;font-weight:700;color:var(--ink);}
+  .rb-offer{
+    border:1px solid var(--line-strong);
+    border-radius:10px;
+    padding:18px 20px;
+    margin-bottom:22px;
+  }
+  .rb-offer .row{display:flex;justify-content:space-between;align-items:baseline;}
+  .rb-offer .row.first{margin-bottom:6px;}
+  .rb-offer .merchant{font-size:16px;font-weight:700;color:var(--ink);}
+  .rb-offer .price-r{font-size:16px;font-weight:700;color:var(--ink);}
+  .rb-offer .eta{font-size:15px;color:var(--ink);}
+  .rb-offer .fee{font-size:15px;color:var(--ink);}
+  .rb-cart-row{display:flex;gap:14px;align-items:stretch;}
+  .qty{
+    display:flex;align-items:center;
+    border:1px solid var(--line-strong);
+    border-radius:6px;overflow:hidden;flex-shrink:0;
+  }
+  .qty button{
+    width:42px;height:48px;border:none;background:#fff;cursor:pointer;
+    font-size:20px;color:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .qty button:hover{background:#f6f6f6;}
+  .qty .val{
+    width:42px;text-align:center;font-size:16px;font-weight:600;
+    border-left:1px solid var(--line);border-right:1px solid var(--line);
+    height:48px;display:flex;align-items:center;justify-content:center;
+  }
+  .add-cart{
+    flex:1;background:var(--black);color:#fff;border:none;border-radius:6px;
+    font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.3px;
+  }
+  .add-cart:hover{background:#222;}
+
+  /* delivery options carousel */
+  .rb-carousel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;}
+  .rb-arrows{display:flex;gap:8px;}
+  .rb-arrow{
+    width:30px;height:30px;border:1px solid var(--line-strong);border-radius:50%;background:#fff;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink);line-height:1;
+  }
+  .rb-arrow:hover{background:#f6f6f6;}
+  .rb-carousel{
+    display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding:4px 2px 8px;margin-bottom:22px;scrollbar-width:none;
+  }
+  .rb-carousel::-webkit-scrollbar{display:none;}
+  .rb-card{
+    flex:0 0 184px;scroll-snap-align:start;border:1.5px solid var(--line-strong);border-radius:10px;
+    padding:14px 16px;cursor:pointer;background:#fff;text-align:left;font:inherit;position:relative;transition:border-color .12s;
+  }
+  .rb-card:hover{border-color:#aaa;}
+  .rb-card.selected{border-color:var(--black);box-shadow:inset 0 0 0 1px var(--black);}
+  .rb-card.selected::after{
+    content:"\2713";position:absolute;top:10px;right:12px;
+    width:18px;height:18px;background:var(--black);color:#fff;border-radius:50%;
+    font-size:11px;display:flex;align-items:center;justify-content:center;
+  }
+  .rb-card .c-name{font-size:14px;font-weight:800;color:var(--ink);}
+  .rb-card .c-merchant{font-size:12px;color:var(--muted);margin-top:2px;}
+  .rb-card .c-eta{font-size:13px;color:var(--muted);margin:6px 0 12px;line-height:1.3;}
+  .rb-card .c-fee{font-size:16px;font-weight:800;color:var(--black);}
+  /* ===== end ReserveBar module ===== */
+
+  .awards{margin-bottom:24px;}
+  .awards p{font-size:16px;color:var(--ink);margin-bottom:12px;}
+  .desc{font-size:16px;line-height:1.7;color:#2e2e2e;margin-bottom:26px;}
+  .aromas{font-size:16px;font-weight:800;letter-spacing:.5px;color:var(--ink);}
+
+  @media (max-width:900px){
+    .product{grid-template-columns:1fr;gap:36px;padding:32px 20px 60px;}
+    h1.title{font-size:34px;}
+    nav{display:none;}
+    header{justify-content:space-between;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="announce">All orders over $300 ship for just $0.01!</div>
+
+  <header>
+    <a class="brand" href="https://shop.lawswhiskeyhouse.com/">
+      <img class="logo" src="https://shop.lawswhiskeyhouse.com/cdn/shop/files/cropped-laws-logo-white_2x_99fc15b5-919f-4f24-b3a7-f9c06ec63698.png?v=1665122617" alt="Laws Whiskey House">
+    </a>
+    <nav>
+      <a href="https://lawswhiskeyhouse.com/our-whiskeys/">Our Whiskey</a>
+      <a href="https://lawswhiskeyhouse.com/our-story/">Our Story</a>
+      <a href="https://lawswhiskeyhouse.com/the-distillery/">The Distillery</a>
+      <a href="https://lawswhiskeyhouse.com/behind-the-barrel/">Behind the Barrel</a>
+      <a href="https://merch.lawswhiskeyhouse.com/">Merch</a>
+      <a href="https://trytn.com/lawswhiskeyhouse">Book a Tour</a>
+    </nav>
+    <div class="icons">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/></svg>
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
+    </div>
+  </header>
+
+  <main class="product">
+
+    <div class="gallery">
+      <div class="main-img">
+        <img src="https://shop.lawswhiskeyhouse.com/cdn/shop/products/4Gflagship1Shopify_2048x2048px.jpg?v=1666974402&width=1445" alt="Four Grain Straight Bourbon Whiskey">
+      </div>
+      <div class="thumbs">
+        <div class="thumb">
+          <img src="https://shop.lawswhiskeyhouse.com/cdn/shop/files/Untitleddesign-2024-05-13T110404.766.png?v=1715619854&width=720" alt="Four Grain Straight Bourbon Whiskey — SIP Awards Gold">
+        </div>
+        <div class="thumb">
+          <img src="https://shop.lawswhiskeyhouse.com/cdn/shop/files/CopyofShopify_2048x2048px_85.png?v=1715619854&width=720" alt="Four Grain Straight Bourbon Whiskey — Platinum Winner">
+        </div>
+      </div>
+    </div>
+
+    <div class="details">
+      <div class="eyebrow">Laws Whiskey House</div>
+      <h1 class="title">Four Grain Straight Bourbon Whiskey</h1>
+
+      <!-- ===== ReserveBar commerce module ===== -->
+      <div class="rb-module">
+        <div class="rb-price">$51.99</div>
+
+        <div class="rb-label">Size</div>
+        <div class="rb-size">750 ML</div>
+
+        <div class="rb-block">
+          <div class="rb-label">Delivers to:</div>
+          <a class="rb-address" href="#">2669 Larimer St, Denver, CO 80205</a>
+        </div>
+
+        <div class="rb-carousel-head">
+          <div class="rb-label" style="margin-bottom:0;">Delivery From: Mondo Vino</div>
+          <div class="rb-arrows">
+            <button class="rb-arrow" id="prevOpt" aria-label="Previous">&#8249;</button>
+            <button class="rb-arrow" id="nextOpt" aria-label="Next">&#8250;</button>
+          </div>
+        </div>
+
+        <div class="rb-carousel" id="rbCarousel">
+          <button class="rb-card selected">
+            <div class="c-name">Local Delivery</div>
+            <div class="c-merchant">Mondo Vino</div>
+            <div class="c-eta">Arrives in 60 mins</div>
+            <div class="c-fee">$4.99</div>
+          </button>
+          <button class="rb-card">
+            <div class="c-name">Standard Shipping</div>
+            <div class="c-merchant">Ships nationwide</div>
+            <div class="c-eta">5&ndash;7 business days</div>
+            <div class="c-fee">$14.99</div>
+          </button>
+          <button class="rb-card">
+            <div class="c-name">Store Pickup</div>
+            <div class="c-merchant">Mondo Vino</div>
+            <div class="c-eta">Ready in 2 hours</div>
+            <div class="c-fee">Free</div>
+          </button>
+          <button class="rb-card">
+            <div class="c-name">Scheduled Delivery</div>
+            <div class="c-merchant">Mondo Vino</div>
+            <div class="c-eta">Pick a date &amp; time</div>
+            <div class="c-fee">$4.99</div>
+          </button>
+        </div>
+
+        <div class="rb-cart-row">
+          <div class="qty">
+            <button id="dec" aria-label="Decrease quantity">&minus;</button>
+            <div class="val" id="qval">1</div>
+            <button id="inc" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="add-cart">Add To Cart - $51.99</button>
+        </div>
+      </div>
+      <!-- ===== end ReserveBar module ===== -->
+
+      <div class="awards">
+        <p>Double Gold: 2024 SIP Awards</p>
+        <p>Platinum: 2023 Ascot Awards</p>
+      </div>
+
+      <p class="desc">Our Four Grain Bourbon story starts with two Colorado family farms where high quality corn and heirloom varietals of wheat, barley and rye are grown. Those grains find their expression during our labor-intensive cooking technique, bringing each grain's individual character to life, while open-air sour mash adds soulful complexity. After four years in 53-gallon charred oak barrels, influenced by our high-altitude climate, an entirely novel bourbon unfolds.</p>
+
+      <div class="aromas">AROMAS:</div>
+      <p class="desc" style="margin:8px 0 22px;">Orange blossoms compliment notes of black tea, honey and dusty pepper.</p>
+
+      <div class="aromas">PALATE:</div>
+      <p class="desc" style="margin:8px 0 22px;">Pekoe tea, orange peel, cinnamon and vanilla custard. Hints of sweet tobacco and spice lead to a rich, dry finish.</p>
+
+      <div class="aromas">THE DETAILS:</div>
+      <p class="desc" style="margin:8px 0 0;">
+        Mash Bill: 60% Colorado corn, 20% heirloom wheat, 10% heirloom rye, 10% heirloom malted barley<br>
+        Aged 4+ years in new 53-gallon charred oak barrels<br>
+        95 Proof · 47.5% ABV
+      </p>
+    </div>
+
+  </main>
+
+<script>
+  let q = 1;
+  const val = document.getElementById('qval');
+  document.getElementById('inc').onclick = () => { q++; val.textContent = q; };
+  document.getElementById('dec').onclick = () => { if (q > 1) { q--; val.textContent = q; } };
+
+  // delivery options carousel — select + scroll
+  document.querySelectorAll('.rb-card').forEach(card => {
+    card.onclick = () => {
+      document.querySelectorAll('.rb-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    };
+  });
+  const carousel = document.getElementById('rbCarousel');
+  document.getElementById('nextOpt').onclick = () => carousel.scrollBy({left: 196, behavior: 'smooth'});
+  document.getElementById('prevOpt').onclick = () => carousel.scrollBy({left: -196, behavior: 'smooth'});
+</script>
+</body>
+</html>
